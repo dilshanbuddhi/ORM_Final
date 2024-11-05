@@ -1,0 +1,79 @@
+/* Dark mode styling */
+.dark-mode-pane {
+    -fx-background-color: #1e1e1e;
+    -fx-padding: 20px;
+}
+
+.login-title {
+    -fx-font-weight: bold;
+    -fx-font-size: 80px;
+    -fx-text-fill: #ffffff;
+    -fx-font-family: "HoloLens MDL2 Assets";
+}
+
+.login-field {
+    -fx-background-color: #333333;
+    -fx-text-fill: #ffffff;
+    -fx-border-color: #5c5c5c;
+    -fx-border-radius: 5px;
+    -fx-padding: 7px;
+    -fx-font-size: 16px;
+
+}
+
+.login-field:hover {
+    -fx-translate-x: 3px ease;
+    -fx-border-color: #3eff00;
+    -fx-cursor: hand;
+
+}
+
+.logo {
+    -fx-font-weight: bold; /* Makes the text bold */
+    -fx-font-size: 30px; /* Sets the font size */
+    -fx-text-fill: #ff0000; /* Sets the text color */
+    -fx-border-color: #00aaff; /* Sets the border color */
+    -fx-border-width: 2px; /* Sets the border width */
+    -fx-font-style: italic; /* Makes the text italic */
+    -fx-font-family: "Arial"; /* Sets the font family */
+    -fx-padding: 10px; /* Adds padding around the text */
+    -fx-background-color: rgba(255, 255, 255, 0.1); /* Optional: Subtle background */
+    -fx-background-radius: 5px; /* Optional: Rounds the corners of the background */
+    -fx-effect: dropshadow(gaussian, #00aaff, 5, 0.0, 0, 1); /* Optional: Adds a drop shadow effect */
+}
+
+.logo:hover {
+    -fx-background-color: rgba(255, 255, 255, 0.3); /* Changes background on hover */
+}
+
+
+.login-button {
+    -fx-background-color: #00aaff;
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-border-radius: 5px;
+    -fx-font-family: "Arial";
+}
+
+.login-button:hover {
+    -fx-background-color: #005f8f;
+    -fx-cursor: hand;
+}
+
+.register-link {
+    -fx-text-fill: #00aaff;
+    -fx-font-size: 14px;
+    -fx-font-family: "Arial";
+}
+
+.register-link:hover {
+    -fx-underline: true;
+    -fx-cursor: hand;
+    -fx-text-fill: #ffffff;
+}
+.footer-text {
+    -fx-font-size: 14px; /* Adjust the font size */
+    -fx-text-fill: #ffffff; /* Set text color */
+    -fx-padding: 10px; /* Add padding */
+}

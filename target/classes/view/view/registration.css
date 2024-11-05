@@ -1,0 +1,54 @@
+.dark-mode-pane {
+    -fx-background-color: #1a1a1e; /* Dark background for the pane */
+}
+
+.registration-title {
+    -fx-font-weight: bold;
+    -fx-font-size: 50px;
+    -fx-text-fill: #ffffff; /* White text for the title */
+    -fx-padding: 20px; /* Adds padding around the title */
+}
+
+.registration-field {
+    -fx-font-size: 14px;
+    -fx-padding: 10px; /* Padding inside the fields */
+    -fx-background-color: #3a3a3e; /* Dark background for text fields */
+    -fx-text-fill: #ffffff; /* White text in the fields */
+    -fx-border-color: #00aaff; /* Border color */
+    -fx-border-radius: 5px; /* Rounded borders */
+}
+
+.registration-field:hover {
+    -fx-translate-x: 3px ease;
+    -fx-border-color: #3eff00;
+    -fx-cursor: hand;
+}
+
+.register-button {
+    -fx-background-color: #00aaff; /* Button background color */
+    -fx-text-fill: white; /* White text on the button */
+    -fx-font-weight: bold; /* Bold text */
+    -fx-border-radius: 5px; /* Rounded corners */
+    -fx-padding: 10px; /* Padding inside the button */
+    -fx-effect: dropshadow(gaussian, #000000, 5, 0.0, 0, 1); /* Optional drop shadow */
+}
+
+.register-button:hover {
+    -fx-background-color: #0080ff; /* Darker blue on hover */
+}
+
+.back-button {
+    -fx-background-color: #393a3a; /* Button background color */
+    -fx-text-fill: white; /* White text on the button */
+    -fx-font-weight: bold; /* Bold text */
+    -fx-border-radius: 5px; /* Rounded corners */
+    -fx-padding: 10px; /* Padding inside the button */
+    -fx-effect: dropshadow(gaussian, #000000, 5, 0.0, 0, 1); /* Optional drop shadow */
+}
+
+.footer-text {
+    -fx-font-size: 14px; /* Font size for footer text */
+    -fx-text-fill: #ffffff; /* White text */
+    -fx-padding: 10px; /* Padding around footer text */
+    -fx-text-alignment: center; /* Center align the footer text */
+}
