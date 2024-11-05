@@ -1,0 +1,25 @@
+.dark-mode-pane {
+    -fx-background-color: #1e1e1e;
+    -fx-padding: 20px;
+}
+
+.dashboard-title {
+    -fx-font-weight: bold;
+    -fx-font-size: 40px;
+    -fx-text-fill: #ffffff;
+}
+
+.dashboard-button {
+    -fx-background-color: #00aaff;
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-border-radius: 5px;
+    -fx-font-family: "Arial";
+    -fx-pref-width: 250px;
+}
+
+.dashboard-button:hover {
+    -fx-background-color: #005f8f;
+    -fx-cursor: hand;
+}

@@ -21,7 +21,7 @@ public class LoginFormContraller {
     UserDao userDao = (UserDao) DaoFactory.getdaoFactory().getDao(DaoFactory.DaoTypes.USER);
     UserBo userBo = (UserBo) BoFactory.getBoFactory().getBO(BoFactory.BOTypes.USER);
 
-    String liveUserRole = "";
+    static String liveUserRole = "";
     @FXML
     private Button btnLogin;
 
@@ -35,7 +35,7 @@ public class LoginFormContraller {
     private TextField txtUsername;
 
     @FXML
-    void loginOnAction(ActionEvent event) {
+    void loginOnAction(ActionEvent event) throws IOException {
 
         String username = txtUsername.getText();
         String password = txtPassword.getText();
@@ -58,10 +58,22 @@ public class LoginFormContraller {
                         liveUserRole= "user";
                         System.out.println("he is user");
                     }
+                    getdashboard();
         }else {
                     new Alert(Alert.AlertType.ERROR,"Invalid password").show();
                 }
     }}}
+
+    void getdashboard() throws IOException {
+        AnchorPane rootNode = FXMLLoader.load(getClass().getResource("/view/dashboard.fxml"));
+
+        Scene scene = new Scene(rootNode);
+
+        Stage stage = (Stage) registerLink.getScene().getWindow();
+        stage.setScene(scene);
+        stage.centerOnScreen();
+        stage.setTitle("Registration Page");
+    }
 
     @FXML
     void registrationOnAction(ActionEvent event) throws IOException {
@@ -78,6 +90,10 @@ public class LoginFormContraller {
             stage.centerOnScreen();
             stage.setTitle("Registration Page");
         }
+    }
+
+    static String getLiveUserRole() {
+        return liveUserRole;
     }
 
 }
