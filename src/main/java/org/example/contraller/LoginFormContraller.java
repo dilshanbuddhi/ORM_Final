@@ -50,7 +50,6 @@ public class LoginFormContraller {
 
             }else{
                 if (BCrypt.checkpw(password, userDto.getPassword())){
-                    /*new Alert(Alert.AlertType.CONFIRMATION, "Login successful").show();*/
                     if (userDto.getRole().equals("admin")) {
                         System.out.println("he is admin");
                         liveUserRole= "admin";

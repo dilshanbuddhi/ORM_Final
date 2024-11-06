@@ -6,6 +6,7 @@ import org.example.dao.custom.UserDao;
 import org.example.dto.UserDto;
 import org.example.entity.User;
 
+import javax.print.DocFlavor;
 import java.util.List;
 
 public class UserBoImpl implements UserBo {
@@ -34,5 +35,11 @@ public class UserBoImpl implements UserBo {
         } else {
             return new UserDto(user.getId(), user.getUsername(), user.getEmail(), user.getPassword(), user.getRole());
         }
+    }
+
+    @Override
+    public UserDto getdatabyRole(String role) {
+        User user = userDao.getDataByrole(role);
+        return new UserDto(user.getId(), user.getUsername(), user.getEmail(), user.getPassword(), user.getRole());
     }
 }

@@ -36,7 +36,7 @@ public class DashboardController {
 
     @FXML
     void openStudentManagement(ActionEvent event) throws IOException {
-        AnchorPane rootNode = FXMLLoader.load(getClass().getResource("/view/StudentManagement.fxml"));
+        AnchorPane rootNode = FXMLLoader.load(getClass().getResource("/view/Student.fxml"));
 
         Scene scene = new Scene(rootNode);
 

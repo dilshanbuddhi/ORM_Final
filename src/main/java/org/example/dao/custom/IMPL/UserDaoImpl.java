@@ -71,4 +71,28 @@ public class UserDaoImpl implements UserDao {
         return user; // Will return null if no user is found
     }
 
+    @Override
+    public User getDataByrole(String role) {
+        Session session = FactoryConfiguration.getInstance().getSession();
+        User user = null;
+
+        try {
+            String hql = "FROM User WHERE role = :role";
+            user = session.createQuery(hql, User.class)
+                    .setParameter("role", role)
+                    .getSingleResult();
+        } catch (NoResultException e) {
+            // Handle the case where no result is found
+        } catch (Exception e) {
+            e.printStackTrace(); // Log any other exceptions
+        } finally {
+            if (session != null) {
+                session.close(); // Ensure the session is closed
+            }
+        }
+
+        return user; // Will return null if no user is found
+
+    }
+
 }
