@@ -68,7 +68,7 @@ public class UserDaoImpl implements UserDao {
             }
         }
 
-        return user; // Will return null if no user is found
+        return user;
     }
 
     @Override

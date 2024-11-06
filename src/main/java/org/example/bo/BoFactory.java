@@ -1,5 +1,6 @@
 package org.example.bo;
 
+import org.example.bo.custom.BoIMPL.ProgramBoImpl;
 import org.example.bo.custom.BoIMPL.StudentBoImpl;
 import org.example.bo.custom.BoIMPL.UserBoImpl;
 
@@ -12,7 +13,7 @@ public class BoFactory {
     }
 
     public enum BOTypes{
-        USER,STUDENT
+        USER,STUDENT,PROGRAM
     }
 
 
@@ -24,6 +25,8 @@ public class BoFactory {
             case STUDENT:
                 return new StudentBoImpl();
 
+            case PROGRAM:
+                return new ProgramBoImpl();
         }
         return null;
     }

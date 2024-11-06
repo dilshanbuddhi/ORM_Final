@@ -1,0 +1,77 @@
+/* Dark mode styling for the entire pane */
+.dark-mode-pane {
+    -fx-background-color: #1a1a1e;
+    -fx-padding: 20px;
+}
+
+/* Dashboard Title styling */
+.dashboard-title {
+    -fx-font-weight: bold;
+    -fx-font-size: 40px;
+    -fx-text-fill: #ffffff;
+}
+
+/* Styling for form input fields */
+.text-field {
+    -fx-background-color: #2b2b2b;
+    -fx-text-fill: #ffffff;
+    -fx-border-color: #00aaff;
+    -fx-border-radius: 5px;
+    -fx-padding: 5px;
+}
+
+/* Form field label styling */
+.label {
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+}
+
+/* Button Styling */
+.dashboard-button {
+    -fx-background-color: #00aaff;
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-border-radius: 5px;
+    -fx-font-family: "Arial";
+    -fx-pref-width: 150px;
+    -fx-padding: 10px;
+}
+
+/* Hover effect for buttons */
+.dashboard-button:hover {
+    -fx-background-color: #005f8f;
+    -fx-cursor: hand;
+}
+
+/* TableView Styling */
+.table-view {
+    -fx-background-color: #3a3a3a;
+    -fx-border-color: #00aaff;
+    -fx-border-radius: 5px;
+}
+
+/* Table Column Headers */
+.table-view .column-header {
+    -fx-background-color: #555555;
+    -fx-text-fill: #ffffff;
+    -fx-font-weight: bold;
+}
+
+/* Table Row Cells */
+.table-view .cell {
+    -fx-text-fill: #ffffff;
+    -fx-background-color: #2e2e2e;
+}
+
+/* Hover effect for table rows */
+.table-view .cell:hover {
+    -fx-background-color: #444444;
+}
+
+/* Hover effect for table rows */
+.table-row-cell:hover {
+    -fx-background-color: #3a3a3a;
+    -fx-cursor: hand;
+}
