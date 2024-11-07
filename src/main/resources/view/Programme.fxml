@@ -55,7 +55,7 @@
         </HBox>
 
         <!-- Table for Program Records -->
-        <TableView fx:id="tblPrograms" layoutX="148.0" layoutY="459.0" prefHeight="200.0" prefWidth="602.0" styleClass="table-view">
+        <TableView fx:id="tblPrograms" layoutX="148.0" layoutY="459.0" onMouseClicked="#onClickedAction" prefHeight="200.0" prefWidth="602.0" styleClass="table-view">
             <columns>
                 <TableColumn fx:id="colProgramID" prefWidth="143.19996643066406" text="Program ID" />
                 <TableColumn fx:id="colProgramName" prefWidth="192.0" text="Program Name" />

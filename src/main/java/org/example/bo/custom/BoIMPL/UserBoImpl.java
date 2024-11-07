@@ -6,7 +6,7 @@ import org.example.dao.custom.UserDao;
 import org.example.dto.UserDto;
 import org.example.entity.User;
 
-import javax.print.DocFlavor;
+import java.util.ArrayList;
 import java.util.List;
 
 public class UserBoImpl implements UserBo {
@@ -19,7 +19,8 @@ public class UserBoImpl implements UserBo {
     @Override
     public List<UserDto> getAllUsers() {
         List<User> users = userDao.getAllUsers();
-        List<UserDto> userDtos = null;
+        System.out.print(users.size());
+        List<UserDto> userDtos= new ArrayList<>();
         for (User user : users) {
             userDtos.add(new UserDto(user.getId(), user.getUsername(), user.getEmail(), user.getPassword(), user.getRole()));
         }
@@ -41,5 +42,20 @@ public class UserBoImpl implements UserBo {
     public UserDto getdatabyRole(String role) {
         User user = userDao.getDataByrole(role);
         return new UserDto(user.getId(), user.getUsername(), user.getEmail(), user.getPassword(), user.getRole());
+    }
+
+    @Override
+    public boolean save(UserDto userDto) {
+        return userDao.save(new User(userDto.getId(), userDto.getUsername(), userDto.getEmail(), userDto.getPassword(), userDto.getRole()));
+    }
+
+    @Override
+    public boolean deleteUser(String id) {
+        return userDao.delete(id);
+    }
+
+    @Override
+    public boolean updateUser(UserDto userDto) {
+        return userDao.update(new User(userDto.getId(), userDto.getUsername(), userDto.getEmail(), userDto.getPassword(), userDto.getRole()));
     }
 }

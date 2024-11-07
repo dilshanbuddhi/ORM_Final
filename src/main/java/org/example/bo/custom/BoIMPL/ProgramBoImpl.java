@@ -28,4 +28,20 @@ public class ProgramBoImpl implements ProgramBo {
 
         return FXCollections.observableArrayList(programDtos);
     }
+
+    @Override
+    public boolean deleteProgram(String programId) {
+        return programDao.delete(programId);
+    }
+
+    @Override
+    public ProgramDto searchProgram(String programId) {
+        Programme programme = programDao.search(programId);
+        return new ProgramDto(programme.getProgramId(), programme.getName(), programme.getDuration(), programme.getFees());
+    }
+
+    @Override
+    public boolean updateProgram(ProgramDto programDto) {
+        return programDao.update(new Programme(programDto.getProgramId(), programDto.getName(), programDto.getDuration(), programDto.getFees()));
+    }
 }

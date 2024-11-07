@@ -15,4 +15,10 @@ public interface UserDao extends CrudDao<User> {
     User getdata(String username);
 
     User getDataByrole(String role);
+
+    boolean save(User user);
+
+    boolean delete(String id);
+
+    boolean update(User user);
 }

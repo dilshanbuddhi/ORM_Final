@@ -9,4 +9,11 @@ public interface ProgramDao extends CrudDao<Programme> {
     boolean save(Programme programme);
 
     List<Programme> getAll();
+
+    boolean delete(String programId);
+
+    Programme search(String programId);
+
+    boolean update(Programme programme);
 }
+

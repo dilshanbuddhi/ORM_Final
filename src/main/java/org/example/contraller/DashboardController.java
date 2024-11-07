@@ -54,8 +54,15 @@ public class DashboardController {
     }
 
     @FXML
-    void openUserManagement(ActionEvent event) {
+    void openUserManagement(ActionEvent event) throws IOException {
+        AnchorPane rootNode = FXMLLoader.load(getClass().getResource("/view/userManagement.fxml"));
 
+        Scene scene = new Scene(rootNode);
+
+        Stage stage = (Stage) btnStudentManagement.getScene().getWindow();
+        stage.setScene(scene);
+        stage.centerOnScreen();
+        stage.setTitle("Registration Page");
     }
 
 }

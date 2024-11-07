@@ -21,7 +21,7 @@ public class LoginFormContraller {
     UserDao userDao = (UserDao) DaoFactory.getdaoFactory().getDao(DaoFactory.DaoTypes.USER);
     UserBo userBo = (UserBo) BoFactory.getBoFactory().getBO(BoFactory.BOTypes.USER);
 
-    static String liveUserRole = "";
+    static UserDto liveUserDto;
     @FXML
     private Button btnLogin;
 
@@ -52,9 +52,9 @@ public class LoginFormContraller {
                 if (BCrypt.checkpw(password, userDto.getPassword())){
                     if (userDto.getRole().equals("admin")) {
                         System.out.println("he is admin");
-                        liveUserRole= "admin";
+                        liveUserDto= userDto;
                     }else {
-                        liveUserRole= "user";
+                        liveUserDto= userDto;
                         System.out.println("he is user");
                     }
                     getdashboard();
@@ -91,8 +91,8 @@ public class LoginFormContraller {
         }
     }
 
-    static String getLiveUserRole() {
-        return liveUserRole;
+    static UserDto getLiveUserRole() {
+        return liveUserDto;
     }
 
 }

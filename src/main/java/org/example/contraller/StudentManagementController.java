@@ -15,7 +15,7 @@ import java.time.LocalDate;
 
 public class StudentManagementController {
 
-    static String role;
+    static UserDto liveUser;
 
     UserBo userBo = (UserBo) BoFactory.getBoFactory().getBO(BoFactory.BOTypes.USER);
     StudentBo studentBo = (StudentBo) BoFactory.getBoFactory().getBO(BoFactory.BOTypes.STUDENT);
@@ -74,9 +74,18 @@ public class StudentManagementController {
     private TextField txtStudentTel;
 
     public void initialize(){
-        role = LoginFormContraller.getLiveUserRole();
+        liveUser = LoginFormContraller.getLiveUserRole();
         setcellvaluefactory();
         getallStudent();
+        checkrolll(liveUser);
+    }
+
+    private void checkrolll(UserDto liveUser) {
+        if (liveUser.getRole().equals("user")){
+            btnAddStudent.setVisible(true);
+            btnDeleteStudent.setVisible(false);
+            btnUpdateStudent.setVisible(true);
+        }
     }
 
 
@@ -97,8 +106,6 @@ public class StudentManagementController {
 
     @FXML
     void addStudent(ActionEvent event) {
-        UserDto userDto = userBo.getdatabyRole(role);
-        System.out.print(userDto.getId()+userDto.getPassword()+userDto.getUsername()+userDto.getRole());
 
         String id = txtStudentID.getText();
         String name = txtStudentName.getText();
@@ -108,7 +115,7 @@ public class StudentManagementController {
         String dob = String.valueOf(txtStudentDOB.getValue());
 
         StudentDto studentDto = new StudentDto(id, name, email, tel, address, dob);
-        boolean result = studentBo.addStudent(studentDto,userDto);
+        boolean result = studentBo.addStudent(studentDto,liveUser);
         if (result){
             getallStudent();
             new Alert(Alert.AlertType.CONFIRMATION, "Add Successful").show();
@@ -160,8 +167,6 @@ public class StudentManagementController {
             getallStudent();
             new Alert(Alert.AlertType.CONFIRMATION, "Update Successful").show();
         }
-
-
     }
 
 }

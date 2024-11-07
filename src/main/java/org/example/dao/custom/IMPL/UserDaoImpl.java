@@ -44,7 +44,7 @@ public class UserDaoImpl implements UserDao {
     public List<User> getAllUsers() {
         Session session = FactoryConfiguration.getInstance().getSession();
         String hql = "from User";
-        return session.createQuery(hql).list();
+        return session.createQuery(hql, User.class).list();
     }
 
     @Override
@@ -93,6 +93,36 @@ public class UserDaoImpl implements UserDao {
 
         return user; // Will return null if no user is found
 
+    }
+
+    @Override
+    public boolean save(User user) {
+        Session session = FactoryConfiguration.getInstance().getSession();
+        session.getTransaction();
+        session.save(user);
+        session.getTransaction().commit();
+        return true;
+    }
+
+    @Override
+    public boolean delete(String id) {
+        Session session = FactoryConfiguration.getInstance().getSession();
+        session.beginTransaction();
+        String hql = "delete from User where id = :id";
+        session.createQuery(hql)
+                .setParameter("id", id)
+                .executeUpdate();
+        session.getTransaction().commit();
+        return true;
+    }
+
+    @Override
+    public boolean update(User user) {
+        Session session = FactoryConfiguration.getInstance().getSession();
+        session.beginTransaction();
+        session.update(user);
+        session.getTransaction().commit();
+        return true;
     }
 
 }
