@@ -65,8 +65,8 @@
             <columns>
                 <TableColumn fx:id="colUserID" prefWidth="100.0" text="User ID" />
                 <TableColumn fx:id="colUsername" prefWidth="200.0" text="Username" />
-                <TableColumn fx:id="colEmail" prefWidth="200.0" text="Email" />
-                <TableColumn fx:id="colRole" prefWidth="150.0" text="Role" />
+                <TableColumn fx:id="colEmail" prefWidth="211.20001220703125" text="Email" />
+                <TableColumn fx:id="colRole" prefWidth="139.199951171875" text="Role" />
             </columns>
         </TableView>
         <Text fill="WHITE" layoutX="297.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="User Management" wrappingWidth="395.1999267578125">
