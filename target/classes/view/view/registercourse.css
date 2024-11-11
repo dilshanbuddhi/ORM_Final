@@ -1,0 +1,100 @@
+/* Dark Mode Styling for the AnchorPane */
+.dark-mode-pane {
+    -fx-background-color: #1a1a1e;
+    -fx-padding: 20px;
+}
+
+/* Styling for ComboBox */
+
+.combo-box {
+    -fx-background-color: #2b2b2b;
+    -fx-text-fill: #ffffff;
+    -fx-border-color: #00aaff;
+    -fx-border-radius: 5px;
+    -fx-padding: 4px;
+    -fx-font-size: 16px;
+}
+
+/* ComboBox dropdown styling */
+.combo-box .list-cell {
+    -fx-background-color: #3a3a3a;
+    -fx-text-fill: #ffffff;
+    -fx-padding: 4px;
+}
+
+.combo-box .list-cell:hover {
+    -fx-background-color: #00aaff;
+    -fx-text-fill: #ffffff;
+}
+
+/* ComboBox arrow button styling */
+.combo-box .arrow-button {
+    -fx-background-color: #2b2b2b;
+    -fx-border-color: #00aaff;
+    -fx-border-radius: 5px;
+}
+
+/* Focused ComboBox */
+.combo-box:focused {
+    -fx-border-color: #005f8f;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);
+}
+
+/* Styling for TextField */
+.text-field {
+
+    -fx-background-color: #2b2b2b;
+    -fx-text-fill: #ffffff;
+    -fx-border-color: #00aaff;
+    -fx-border-radius: 5px;
+    -fx-padding: 5px;
+}
+
+/* Button Styling */
+.button {
+    -fx-background-color: #00aaff;
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-border-radius: 5px;
+    -fx-font-family: "Arial";
+    -fx-pref-width: 150px;
+    -fx-padding: 10px;
+}
+
+/* Button Hover Effect */
+.button:hover {
+    -fx-background-color: #005f8f;
+    -fx-cursor: hand;
+}
+
+/* TableView Styling */
+.table-view {
+    -fx-background-color: #2e2e2e;
+    -fx-border-color: #00aaff;
+    -fx-border-radius: 5px;
+}
+
+/* Table Column Header Styling */
+.table-view .column-header {
+    -fx-background-color: #555555;
+    -fx-text-fill: white;
+}
+
+/* Styling for Text */
+.text {
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-fill: white;
+}
+
+/* Labels inside Text */
+.text-label {
+    -fx-font-size: 14px;
+    -fx-text-fill: #ffffff;
+}
+
+/* General Styling */
+* {
+    -fx-font-family: Arial, sans-serif;
+}
