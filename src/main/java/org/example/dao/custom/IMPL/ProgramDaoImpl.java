@@ -75,4 +75,27 @@ public class ProgramDaoImpl implements ProgramDao {
         session.getTransaction().commit();
         return true;
     }
+
+    @Override
+    public Programme searchByName(String cname) {
+        Session session = FactoryConfiguration.getInstance().getSession();
+        Programme programme = null;
+
+        try {
+            String hql = "FROM Programme WHERE name = :name";
+            programme = session.createQuery(hql, Programme.class)
+                    .setParameter("name", cname)
+                    .getSingleResult();
+        } catch (NoResultException e) {
+            // Handle the case where no result is found
+            System.out.println("No user found with programm: " + programme);
+        } catch (Exception e) {
+            e.printStackTrace(); // Log any other exceptions
+        } finally {
+            if (session != null) {
+                session.close(); // Ensure the session is closed
+            }
+        }
+
+        return programme;     }
 }

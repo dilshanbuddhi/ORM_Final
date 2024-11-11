@@ -44,4 +44,10 @@ public class ProgramBoImpl implements ProgramBo {
     public boolean updateProgram(ProgramDto programDto) {
         return programDao.update(new Programme(programDto.getProgramId(), programDto.getName(), programDto.getDuration(), programDto.getFees()));
     }
+
+    @Override
+    public ProgramDto searchProgramByname(String cname) {
+        Programme programme = programDao.searchByName(cname);
+        return new ProgramDto(programme.getProgramId(), programme.getName(), programme.getDuration(), programme.getFees());
+    }
 }

@@ -5,16 +5,44 @@
 }
 
 /* Styling for ComboBox */
+
 .combo-box {
     -fx-background-color: #2b2b2b;
     -fx-text-fill: #ffffff;
     -fx-border-color: #00aaff;
     -fx-border-radius: 5px;
-    -fx-padding: 5px;
+    -fx-padding: 4px;
+    -fx-font-size: 16px;
+}
+
+/* ComboBox dropdown styling */
+.combo-box .list-cell {
+    -fx-background-color: #3a3a3a;
+    -fx-text-fill: #ffffff;
+    -fx-padding: 4px;
+}
+
+.combo-box .list-cell:hover {
+    -fx-background-color: #00aaff;
+    -fx-text-fill: #ffffff;
+}
+
+/* ComboBox arrow button styling */
+.combo-box .arrow-button {
+    -fx-background-color: #2b2b2b;
+    -fx-border-color: #00aaff;
+    -fx-border-radius: 5px;
+}
+
+/* Focused ComboBox */
+.combo-box:focused {
+    -fx-border-color: #005f8f;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);
 }
 
 /* Styling for TextField */
 .text-field {
+
     -fx-background-color: #2b2b2b;
     -fx-text-fill: #ffffff;
     -fx-border-color: #00aaff;

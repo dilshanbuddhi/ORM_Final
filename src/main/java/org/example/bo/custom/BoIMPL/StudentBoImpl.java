@@ -51,4 +51,13 @@ public class StudentBoImpl implements StudentBo {
             return new StudentDto(student.getId(), student.getName(), student.getEmail(), student.getTel(), student.getAddress(), student.getDob());
         }
     }
+
+    @Override
+    public StudentDto getStudent(String cid) {
+        Student student = studentDao.search(cid);
+        if (student != null) {
+            return new StudentDto(student.getId(), student.getName(), student.getEmail(), student.getTel(), student.getAddress(), student.getDob());
+        }
+        return null;
+    }
 }

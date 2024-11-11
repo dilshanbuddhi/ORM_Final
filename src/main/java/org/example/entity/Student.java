@@ -1,13 +1,12 @@
 package org.example.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -36,4 +35,8 @@ public class Student {
         this.address = address;
         this.dob = dob;
     }
+
+   @OneToMany(mappedBy = "student")
+    private List<Student_programDetail> studentProgramDetails;
+
 }

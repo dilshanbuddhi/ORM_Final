@@ -1,9 +1,12 @@
 package org.example.dto;
 
+import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -14,4 +17,6 @@ public class ProgramDto {
     String name;
     String duration;
     double fees;
+
+
 }

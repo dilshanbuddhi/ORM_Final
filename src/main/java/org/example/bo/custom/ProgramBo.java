@@ -15,4 +15,6 @@ public interface ProgramBo extends SuperBo {
     ProgramDto searchProgram(String programId);
 
     boolean updateProgram(ProgramDto programDto);
+
+    ProgramDto searchProgramByname(String cname);
 }
