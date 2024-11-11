@@ -1,5 +1,6 @@
 package org.example.dao;
 
+import org.example.dao.custom.IMPL.Course_RegistrationDaoImpl;
 import org.example.dao.custom.IMPL.ProgramDaoImpl;
 import org.example.dao.custom.IMPL.StudetDaoImpl;
 import org.example.dao.custom.IMPL.UserDaoImpl;
@@ -20,7 +21,7 @@ public class DaoFactory {
 
 
     public enum DaoTypes{
-        USER,STUDENT,PROGRAM
+        USER,STUDENT,PROGRAM, COURSE
     }
     public SuperDao getDao(DaoTypes daoTypes){
         switch (daoTypes){
@@ -32,6 +33,9 @@ public class DaoFactory {
 
             case PROGRAM:
                 return new ProgramDaoImpl();
+
+            case COURSE:
+                return new Course_RegistrationDaoImpl();
         }
         return null;
     }

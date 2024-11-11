@@ -10,13 +10,13 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import org.example.bo.BoFactory;
+import org.example.bo.custom.Course_Refistration;
 import org.example.bo.custom.ProgramBo;
 import org.example.bo.custom.StudentBo;
 import org.example.dto.PaymentDto;
 import org.example.dto.ProgramDto;
 import org.example.dto.StudentDto;
 import org.example.dto.Student_programDto;
-import org.example.entity.Student_programDetail;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -25,6 +25,7 @@ import java.util.List;
 public class RegisterCourseContraller {
     StudentBo studentBo = (StudentBo) BoFactory.getBoFactory().getBO(BoFactory.BOTypes.STUDENT);
     ProgramBo programBo = (ProgramBo) BoFactory.getBoFactory().getBO(BoFactory.BOTypes.PROGRAM);
+    Course_Refistration courseRefistration = ( Course_Refistration) BoFactory.getBoFactory().getBO(BoFactory.BOTypes.COURSE);
 
     @FXML
     private Button btnDelete;
@@ -120,6 +121,7 @@ public class RegisterCourseContraller {
     @FXML
     void registerOnAction(ActionEvent event) {
         String st_id = cmbStudent.getSelectionModel().getSelectedItem();
+        String cname = cmbCourse.getSelectionModel().getSelectedItem();
         ProgramDto pDto = programBo.searchProgramByname(cmbCourse.getSelectionModel().getSelectedItem());
         StudentDto sDto = studentBo.searchStudent(cmbStudent.getSelectionModel().getSelectedItem());
 
@@ -128,10 +130,13 @@ public class RegisterCourseContraller {
         String date = LocalDateTime.now().toString();
 
         if (st_id != null && pDto != null && payment_status != null && amount_paid != null) {
-            Student_programDto studentProgramDto = new Student_programDto("1", date, sDto, pDto);
+
+            courseRefistration.register("1",date,pDto.getProgramId(),st_id,payment_status,amount_paid);
+
+           /* Student_programDto studentProgramDto = new Student_programDto(null, date, sDto, pDto);
             PaymentDto paymentDto = new PaymentDto(null, payment_status, date, amount_paid, studentProgramDto);
 
-
+*/
 
         }
     }
