@@ -13,6 +13,8 @@ import org.example.bo.BoFactory;
 import org.example.bo.custom.Course_Refistration;
 import org.example.bo.custom.ProgramBo;
 import org.example.bo.custom.StudentBo;
+import org.example.dao.DaoFactory;
+import org.example.dao.custom.Course_registrationDao;
 import org.example.dto.PaymentDto;
 import org.example.dto.ProgramDto;
 import org.example.dto.StudentDto;
@@ -26,6 +28,7 @@ public class RegisterCourseContraller {
     StudentBo studentBo = (StudentBo) BoFactory.getBoFactory().getBO(BoFactory.BOTypes.STUDENT);
     ProgramBo programBo = (ProgramBo) BoFactory.getBoFactory().getBO(BoFactory.BOTypes.PROGRAM);
     Course_Refistration courseRefistration = ( Course_Refistration) BoFactory.getBoFactory().getBO(BoFactory.BOTypes.COURSE);
+    Course_registrationDao courseRegistrationDao = (Course_registrationDao) DaoFactory.getdaoFactory().getDao(DaoFactory.DaoTypes.COURSE);
 
     @FXML
     private Button btnDelete;
@@ -120,6 +123,8 @@ public class RegisterCourseContraller {
 
     @FXML
     void registerOnAction(ActionEvent event) {
+
+        String id = courseRegistrationDao.getNewId();
         String st_id = cmbStudent.getSelectionModel().getSelectedItem();
         String cname = cmbCourse.getSelectionModel().getSelectedItem();
         ProgramDto pDto = programBo.searchProgramByname(cmbCourse.getSelectionModel().getSelectedItem());
@@ -131,7 +136,7 @@ public class RegisterCourseContraller {
 
         if (st_id != null && pDto != null && payment_status != null && amount_paid != null) {
 
-            courseRefistration.register("1",date,pDto.getProgramId(),st_id,payment_status,amount_paid);
+            courseRefistration.register(id,date,pDto.getProgramId(),st_id,payment_status,amount_paid);
 
            /* Student_programDto studentProgramDto = new Student_programDto(null, date, sDto, pDto);
             PaymentDto paymentDto = new PaymentDto(null, payment_status, date, amount_paid, studentProgramDto);
