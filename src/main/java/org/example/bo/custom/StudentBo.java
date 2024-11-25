@@ -7,6 +7,8 @@ import org.example.dto.UserDto;
 import org.example.entity.Student;
 import org.example.entity.User;
 
+import java.util.List;
+
 public interface StudentBo extends SuperBo {
     boolean addStudent(StudentDto studentDto, UserDto userDto);
 
@@ -19,4 +21,6 @@ public interface StudentBo extends SuperBo {
     StudentDto searchStudent(String id);
 
     StudentDto getStudent(String cid);
+
+    List<String> getAllProgrambyId(String id);
 }

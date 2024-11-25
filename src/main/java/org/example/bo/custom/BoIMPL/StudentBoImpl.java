@@ -18,7 +18,7 @@ public class StudentBoImpl implements StudentBo {
     StudentDao studentDao = (StudentDao) DaoFactory.getdaoFactory().getDao(DaoFactory.DaoTypes.STUDENT);
     @Override
     public boolean addStudent(StudentDto se, UserDto ue) {
-        return studentDao.addStudent(new Student(se.getId(), se.getName(), se.getEmail(), se.getTel(), se.getAddress(), se.getDob()), new User(ue.getId(), ue.getUsername(), ue.getEmail(), ue.getPassword(), ue.getRole())); //To change body of generated methods, choose Tools | Templates.ser);
+        return studentDao.addStudent(new Student(se.getId(), se.getName(), se.getEmail(), se.getTel(), se.getAddress(), se.getDob()), new User(ue.getId(), ue.getUsername(), ue.getEmail(), ue.getPassword(), ue.getRole())); 
     }
 
     @Override
@@ -44,6 +44,7 @@ public class StudentBoImpl implements StudentBo {
 
     @Override
     public StudentDto searchStudent(String id) {
+
         Student student = studentDao.search(id);
         if (student == null) {
             return null;
@@ -57,6 +58,15 @@ public class StudentBoImpl implements StudentBo {
         Student student = studentDao.search(cid);
         if (student != null) {
             return new StudentDto(student.getId(), student.getName(), student.getEmail(), student.getTel(), student.getAddress(), student.getDob());
+        }
+        return null;
+    }
+
+    @Override
+    public List<String> getAllProgrambyId(String id) {
+        List<String> programs1 = studentDao.getAllProgrambyId(id);
+        if (programs1 != null) {
+            return programs1;
         }
         return null;
     }

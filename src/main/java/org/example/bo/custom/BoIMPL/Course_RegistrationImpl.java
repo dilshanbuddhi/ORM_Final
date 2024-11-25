@@ -1,10 +1,7 @@
 package org.example.bo.custom.BoIMPL;
 
 import config.FactoryConfiguration;
-import org.example.bo.BoFactory;
 import org.example.bo.custom.Course_Refistration;
-import org.example.bo.custom.ProgramBo;
-import org.example.bo.custom.StudentBo;
 import org.example.dao.DaoFactory;
 import org.example.dao.custom.Course_registrationDao;
 import org.example.dao.custom.ProgramDao;
@@ -14,6 +11,7 @@ import org.example.entity.Student_programDetail;
 import org.hibernate.Session;
 
 import java.io.Serializable;
+import java.util.List;
 
 
 public class Course_RegistrationImpl implements Course_Refistration {
@@ -23,10 +21,10 @@ public class Course_RegistrationImpl implements Course_Refistration {
     Course_registrationDao courseRegistrationDao = (Course_registrationDao) DaoFactory.getdaoFactory().getDao(DaoFactory.DaoTypes.COURSE);
 
     @Override
-    public void register(String number, String date, String programId, String stId, String paymentStatus, String amountPaid) {
+    public void register(String number, String date, String programId, String stId, String paymentStatus, double amountPaid, double remaining) {
 
-        Student_programDetail studentProgramDetail = new Student_programDetail(number, date, studentDao.search(stId), programDao.search(programId));
-        Payment payment = new Payment(paymentStatus, date,amountPaid ,studentProgramDetail);
+        Student_programDetail studentProgramDetail = new Student_programDetail(number, date,amountPaid, studentDao.search(stId), programDao.search(programId));
+        Payment payment = new Payment(paymentStatus, date,remaining,studentProgramDetail);
 
         Session session = FactoryConfiguration.getInstance().getSession();
         session.beginTransaction();
@@ -55,5 +53,13 @@ public class Course_RegistrationImpl implements Course_Refistration {
         session.getTransaction().commit();*/
 
 
+    }
+
+    @Override
+    public List<String> getAllProgrambyId(String id) {
+        Session session = FactoryConfiguration.getInstance().getSession();
+        session.beginTransaction();
+        String hql = "from Student_programDetail where student = :id";
+        return session.createQuery(hql, String.class).setParameter("id", id).list();
     }
 }

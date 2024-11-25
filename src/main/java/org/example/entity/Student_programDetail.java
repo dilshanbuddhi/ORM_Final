@@ -19,6 +19,7 @@ public class Student_programDetail {
     @Id
     private String spid;
     private String registerDate;
+    private double regFee;
 
     @ManyToOne
     @JoinColumn(name = "student_id")

@@ -3,14 +3,19 @@ package org.example.contraller;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 import org.example.bo.BoFactory;
 import org.example.bo.custom.ProgramBo;
 import org.example.dto.ProgramDto;
 import org.example.entity.Programme;
 
 import java.awt.event.MouseEvent;
+import java.io.IOException;
 
 public class ProgramManagementController {
 
@@ -166,5 +171,17 @@ public class ProgramManagementController {
             txtDuration.setText(duration);
             txtFee.setText(String.valueOf(fee));
         }
+
+    }
+
+    public void backOnAction(ActionEvent actionEvent) throws IOException {
+        AnchorPane rootNode = FXMLLoader.load(getClass().getResource("/view/dashboard.fxml"));
+
+        Scene scene = new Scene(rootNode);
+
+        Stage stage = (Stage) txtProgramID.getScene().getWindow();
+        stage.setScene(scene);
+        stage.centerOnScreen();
+        stage.setTitle("Login Page");
     }
 }

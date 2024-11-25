@@ -13,6 +13,7 @@ import org.example.entity.Student;
 public class Student_programDto {
     private String spid;
     private String registerDate;
+    private double reg_fees;
     private StudentDto student;
     private ProgramDto program;
 }

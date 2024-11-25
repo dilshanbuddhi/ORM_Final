@@ -14,6 +14,6 @@ public class PaymentDto {
     private String pid;
     private String paymentMethod;
     private String paymentDate;
-    private String remainPayment;
+    private double remainPayment;
     private Student_programDto studentProgramDetail;
 }

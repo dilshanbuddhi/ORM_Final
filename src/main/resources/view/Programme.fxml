@@ -68,5 +68,6 @@
                 <Font name="System Bold Italic" size="37.0" />
             </font>
         </Text>
+      <Button fx:id="backbtn" layoutX="778.0" layoutY="43.0" mnemonicParsing="false" onAction="#backOnAction" prefHeight="19.0" prefWidth="111.0" styleClass="back-button" text="Back" />
     </children>
 </AnchorPane>

@@ -39,6 +39,14 @@
     -fx-border-color: #005f8f;
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);
 }
+back-button {
+    -fx-background-color: #393a3a; /* Button background color */
+    -fx-text-fill: white; /* White text on the button */
+    -fx-font-weight: bold; /* Bold text */
+    -fx-border-radius: 5px; /* Rounded corners */
+    -fx-padding: 10px; /* Padding inside the button */
+    -fx-effect: dropshadow(gaussian, #000000, 5, 0.0, 0, 1); /* Optional drop shadow */
+}
 
 /* Styling for TextField */
 .text-field {

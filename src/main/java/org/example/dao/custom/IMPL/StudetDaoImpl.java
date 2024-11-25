@@ -19,7 +19,7 @@ public class StudetDaoImpl implements StudentDao {
         // Set the user on the student object that will be saved
         student.setUser(user);
 
-        // Save the student entity with the associated user
+        // Save the stude nt entity with the associated user
         session.save(student);
         session.getTransaction().commit();
         return true;
@@ -76,7 +76,6 @@ public class StudetDaoImpl implements StudentDao {
                     .setParameter("id", id)
                     .getSingleResult();
         } catch (NoResultException e) {
-            // Handle the case where no result is found
             System.out.println("No user found with username: " + id);
         } catch (Exception e) {
             e.printStackTrace(); // Log any other exceptions
@@ -87,5 +86,14 @@ public class StudetDaoImpl implements StudentDao {
         }
 
         return student; // Will return null if no user is found
+    }
+
+    @Override
+    public List<String> getAllProgrambyId(String id) {
+        Session session = FactoryConfiguration.getInstance().getSession();
+        session.beginTransaction();
+        String hql = "from Student where id = :id";
+        return session.createQuery(hql, String.class).setParameter("id", id).list();
+
     }
 }

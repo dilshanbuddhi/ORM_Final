@@ -4,13 +4,18 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 import org.example.bo.BoFactory;
 import org.example.bo.custom.UserBo;
 import org.example.dto.UserDto;
 
+import java.io.IOException;
 import java.util.List;
 
 public class UserManagementController {
@@ -156,5 +161,28 @@ public class UserManagementController {
             txtEmail.setText(userDto.getEmail());
             roleCmb.setValue(userDto.getRole());
         }
+    }
+
+    public void backOnAction(ActionEvent actionEvent) throws IOException {
+        AnchorPane rootNode = FXMLLoader.load(getClass().getResource("/view/dashboard.fxml"));
+
+        Scene scene = new Scene(rootNode);
+
+        Stage stage = (Stage) txtUserID.getScene().getWindow();
+        stage.setScene(scene);
+        stage.centerOnScreen();
+        stage.setTitle("Login Page");
+    }
+
+    public void passwordChangeOnAction(ActionEvent actionEvent) throws IOException {
+        AnchorPane rootNode = FXMLLoader.load(getClass().getResource("/view/passwordChange.fxml"));
+
+        Scene scene = new Scene(rootNode);
+
+        Stage stage = (Stage) txtUserID.getScene().getWindow();
+        stage.setScene(scene);
+        stage.centerOnScreen();
+        stage.setTitle("Registration Page");
+
     }
 }

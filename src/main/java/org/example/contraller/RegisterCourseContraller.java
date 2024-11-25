@@ -4,11 +4,15 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 import org.example.bo.BoFactory;
 import org.example.bo.custom.Course_Refistration;
 import org.example.bo.custom.ProgramBo;
@@ -20,6 +24,7 @@ import org.example.dto.ProgramDto;
 import org.example.dto.StudentDto;
 import org.example.dto.Student_programDto;
 
+import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -131,12 +136,16 @@ public class RegisterCourseContraller {
         StudentDto sDto = studentBo.searchStudent(cmbStudent.getSelectionModel().getSelectedItem());
 
         String payment_status = cmbPaymentStatus.getSelectionModel().getSelectedItem();
-        String amount_paid = txtAmountPaid.getText();
+        double amount_paid = Double.parseDouble(txtAmountPaid.getText());
         String date = LocalDateTime.now().toString();
 
-        if (st_id != null && pDto != null && payment_status != null && amount_paid != null) {
+        if (st_id != null && pDto != null && payment_status != null && amount_paid > 0) {
+            double fee = pDto.getFees();
+            double amount = amount_paid;
 
-            courseRefistration.register(id,date,pDto.getProgramId(),st_id,payment_status,amount_paid);
+            double remaining = fee - amount;
+
+            courseRefistration.register(id,date,pDto.getProgramId(),st_id,payment_status,amount_paid,remaining);
 
            /* Student_programDto studentProgramDto = new Student_programDto(null, date, sDto, pDto);
             PaymentDto paymentDto = new PaymentDto(null, payment_status, date, amount_paid, studentProgramDto);
@@ -164,5 +173,16 @@ public class RegisterCourseContraller {
             txtFee.setText(String.valueOf(dto.getFees()));
             txtDuration.setText(String.valueOf(dto.getDuration()));
         }
+    }
+
+    public void backOnAction(ActionEvent actionEvent) throws IOException {
+        AnchorPane rootNode = FXMLLoader.load(getClass().getResource("/view/dashboard.fxml"));
+
+        Scene scene = new Scene(rootNode);
+
+        Stage stage = (Stage) txtAmountPaid.getScene().getWindow();
+        stage.setScene(scene);
+        stage.centerOnScreen();
+        stage.setTitle("Login Page");
     }
 }

@@ -21,15 +21,15 @@
         <GridPane alignment="TOP_LEFT" hgap="15" layoutX="65.0" layoutY="100.0" vgap="10">
             <!-- Row 1 -->
             <Label text="ID:" />
-            <TextField fx:id="txtStudentID" prefWidth="250.0" promptText="Enter Student ID" GridPane.columnIndex="1" />
+            <TextField fx:id="txtStudentID" onKeyReleased="#stIdOnrelesedOnAction" prefWidth="250.0" promptText="Enter Student ID" GridPane.columnIndex="1" />
    
             <!-- Row 2 -->
             <Label text="Name:" GridPane.rowIndex="1" />
-            <TextField fx:id="txtStudentName" prefWidth="250.0" promptText="Enter Name" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="txtStudentName" onKeyReleased="#stNameOnActionReleased" prefWidth="250.0" promptText="Enter Name" GridPane.columnIndex="1" GridPane.rowIndex="1" />
    
             <!-- Row 3 -->
             <Label text="Email:" GridPane.rowIndex="2" />
-            <TextField fx:id="txtStudentEmail" prefWidth="250.0" promptText="Enter Email" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextField fx:id="txtStudentEmail" onKeyReleased="#stemailOnActionReleased" prefWidth="250.0" promptText="Enter Email" GridPane.columnIndex="1" GridPane.rowIndex="2" />
    
             <!-- Row 4 -->
             <Label text="DOB:" GridPane.rowIndex="3" />
@@ -37,11 +37,11 @@
    
             <!-- Row 5 -->
             <Label text="Address:" GridPane.rowIndex="4" />
-            <TextField fx:id="txtStudentAddress" prefWidth="250.0" promptText="Enter Address" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <TextField fx:id="txtStudentAddress" onKeyReleased="#staddressOnActionReleased" prefWidth="250.0" promptText="Enter Address" GridPane.columnIndex="1" GridPane.rowIndex="4" />
    
             <!-- Row 6 -->
             <Label text="Tel:" GridPane.rowIndex="5" />
-            <TextField fx:id="txtStudentTel" prefWidth="250.0" promptText="Enter Telephone" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <TextField fx:id="txtStudentTel" onKeyReleased="#sttelOnActionReleased" prefWidth="250.0" promptText="Enter Telephone" GridPane.columnIndex="1" GridPane.rowIndex="5" />
          <columnConstraints>
             <ColumnConstraints />
             <ColumnConstraints />
@@ -80,5 +80,6 @@
             <Font name="System Bold Italic" size="37.0" />
          </font>
       </Text>
+      <Button fx:id="backbtn" layoutX="790.0" layoutY="30.0" mnemonicParsing="false" onAction="#backOnAction" prefHeight="19.0" prefWidth="111.0" styleClass="back-button" text="Back" />
     </children>
 </AnchorPane>

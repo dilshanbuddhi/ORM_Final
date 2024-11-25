@@ -4,23 +4,14 @@
     -fx-padding: 20px;
 }
 
-/* Dashboard Title styling */
+/* Title Styling */
 .dashboard-title {
     -fx-font-weight: bold;
     -fx-font-size: 40px;
     -fx-text-fill: #ffffff;
 }
 
-.back-button {
-    -fx-background-color: #393a3a; /* Button background color */
-    -fx-text-fill: white; /* White text on the button */
-    -fx-font-weight: bold; /* Bold text */
-    -fx-border-radius: 5px; /* Rounded corners */
-    -fx-padding: 10px; /* Padding inside the button */
-    -fx-effect: dropshadow(gaussian, #000000, 5, 0.0, 0, 1); /* Optional drop shadow */
-}
-
-/* Styling for form input fields */
+/* Form input fields styling */
 .text-field {
     -fx-background-color: #2b2b2b;
     -fx-text-fill: #ffffff;
@@ -29,14 +20,14 @@
     -fx-padding: 5px;
 }
 
-/* Form field label styling */
+/* Labels styling */
 .label {
     -fx-text-fill: #ffffff;
     -fx-font-size: 16px;
     -fx-font-weight: bold;
 }
 
-/* Button Styling */
+/* Buttons styling */
 .dashboard-button {
     -fx-background-color: #00aaff;
     -fx-text-fill: #ffffff;
@@ -47,6 +38,14 @@
     -fx-pref-width: 150px;
     -fx-padding: 10px;
 }
+.back-button {
+    -fx-background-color: #393a3a;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-border-radius: 5px;
+    -fx-padding: 10px;
+    -fx-effect: dropshadow(gaussian, #000000, 5, 0.0, 0, 1);
+}
 
 /* Hover effect for buttons */
 .dashboard-button:hover {
@@ -54,38 +53,17 @@
     -fx-cursor: hand;
 }
 
-/* TableView Styling */
-.table-view {
-    -fx-background-color: #3a3a3a;
+/* Styling for payment history display */
+.payment-history {
+    -fx-background-color: #2b2b2b;
+    -fx-text-fill: #ffffff;
     -fx-border-color: #00aaff;
-    -fx-border-radius: 5px;
+    -fx-padding: 5px;
+    -fx-pref-width: 400px;
 }
 
-/* Table Column Headers */
-.table-view .column-header {
-    -fx-background-color: #555555;
-    -fx-text-fill: #ffffff;
-    -fx-font-weight: bold;
-}
 
-/* Table Row Cells */
-.table-view .cell {
-    -fx-text-fill: #ffffff;
-    -fx-background-color: #2e2e2e;
-}
-
-/* Hover effect for table rows */
-.table-view .cell:hover {
-    -fx-background-color: #444444;
-}
-
-/* Hover effect for table rows */
-.table-row-cell:hover {
-    -fx-background-color: #3a3a3a;
-    -fx-cursor: hand;
-}
-/* Styling for ComboBox */
-.combobox {
+.combo-box {
     -fx-background-color: #2b2b2b;
     -fx-text-fill: #ffffff;
     -fx-border-color: #00aaff;
@@ -95,26 +73,26 @@
 }
 
 /* ComboBox dropdown styling */
-.combobox .list-cell {
+.combo-box .list-cell {
     -fx-background-color: #3a3a3a;
     -fx-text-fill: #ffffff;
     -fx-padding: 4px;
 }
 
-.combobox .list-cell:hover {
+.combo-box .list-cell:hover {
     -fx-background-color: #00aaff;
     -fx-text-fill: #ffffff;
 }
 
 /* ComboBox arrow button styling */
-.combobox .arrow-button {
+.combo-box .arrow-button {
     -fx-background-color: #2b2b2b;
     -fx-border-color: #00aaff;
     -fx-border-radius: 5px;
 }
 
 /* Focused ComboBox */
-.combobox:focused {
+.combo-box:focused {
     -fx-border-color: #005f8f;
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);
 }

@@ -102,5 +102,6 @@
                 <TableColumn fx:id="colFee" prefWidth="124.7999267578125" text="Fee (LKR)" />
             </columns>
         </TableView>
+      <Button fx:id="backbtn" layoutX="817.0" layoutY="22.0" mnemonicParsing="false" onAction="#backOnAction" prefHeight="19.0" prefWidth="111.0" styleClass="back-button" text="Back" />
     </children>
 </AnchorPane>

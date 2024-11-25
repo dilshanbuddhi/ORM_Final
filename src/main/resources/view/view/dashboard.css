@@ -18,6 +18,14 @@
     -fx-font-family: "Arial";
     -fx-pref-width: 250px;
 }
+.back-button {
+    -fx-background-color: #393a3a; /* Button background color */
+    -fx-text-fill: white; /* White text on the button */
+    -fx-font-weight: bold; /* Bold text */
+    -fx-border-radius: 5px; /* Rounded corners */
+    -fx-padding: 10px; /* Padding inside the button */
+    -fx-effect: dropshadow(gaussian, #000000, 5, 0.0, 0, 1); /* Optional drop shadow */
+}
 
 .dashboard-button:hover {
     -fx-background-color: #005f8f;

@@ -72,4 +72,7 @@ public class DashboardController {
         stage.setTitle("Registration Page");
     }
 
+    public void backOnAction(ActionEvent actionEvent) {
+
+    }
 }

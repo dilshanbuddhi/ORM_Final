@@ -11,19 +11,20 @@ import lombok.Setter;
 @NoArgsConstructor
 @Setter
 @Getter
+
 public class Payment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long pid;
     private String paymentMethod;
     private String paymentDate;
-    private String remainPayment;
+    private double remainPayment;
 
     @OneToOne
     @JoinColumn(name = "sp_id")
     private Student_programDetail studentProgramDetail;
 
-    public Payment(String paymentMethod, String paymentDate, String remainPayment, Student_programDetail studentProgramDetail) {
+    public Payment(String paymentMethod, String paymentDate, double remainPayment, Student_programDetail studentProgramDetail) {
         this.paymentMethod = paymentMethod;
         this.paymentDate = paymentDate;
         this.remainPayment = remainPayment;

@@ -16,4 +16,6 @@ public interface StudentDao extends CrudDao<Student> {
     boolean delete(String id);
 
     Student search(String id);
+
+    List<String> getAllProgrambyId(String id);
 }

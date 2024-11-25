@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<AnchorPane prefHeight="700.0" prefWidth="927.0" styleClass="dark-mode-pane" stylesheets="@view/payment.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.contraller.PaymentController">
+    <children>
+
+        <!-- Payment Form -->
+        <GridPane alignment="TOP_LEFT" hgap="15" layoutX="105.0" layoutY="179.0" vgap="10">
+            <!-- Row 1: Payment ID -->
+            <Label text="Payment ID:" />
+            <TextField fx:id="txtPaymentID" prefWidth="250.0" promptText="Enter Payment ID" GridPane.columnIndex="1" />
+
+            <!-- Row 2: Amount to Pay -->
+            <Label text="Remaining (LKR):" GridPane.rowIndex="1" />
+            <TextField fx:id="txtAmount" prefWidth="250.0" promptText="Enter Amount" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
+            <!-- Row 3: Date -->
+            <Label text="Date:" GridPane.rowIndex="2" />
+            <TextField fx:id="txtDate" prefWidth="250.0" promptText="Enter Date (YYYY-MM-DD)" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+
+            <!-- Row 4: Payment Method -->
+            <Label text="Payment Method:" GridPane.rowIndex="3" />
+            <TextField fx:id="txtMethod" prefWidth="250.0" promptText="Enter Payment Method" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+
+            <columnConstraints>
+                <ColumnConstraints />
+                <ColumnConstraints />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints />
+                <RowConstraints />
+                <RowConstraints />
+                <RowConstraints />
+            </rowConstraints>
+        </GridPane>
+
+        <!-- Buttons for Pay, Refill, Clear -->
+        <HBox alignment="CENTER" layoutX="88.0" layoutY="374.0" spacing="20" />
+
+        <!-- Title -->
+        <Label layoutX="329.0" layoutY="28.0" styleClass="dashboard-title" text="Payment Management" />
+
+        <!-- Back Button -->
+        <Button fx:id="backbtn" layoutX="778.0" layoutY="43.0" mnemonicParsing="false" onAction="#backOnAction" prefHeight="19.0" prefWidth="111.0" styleClass="back-button" text="Back" />
+      <ComboBox fx:id="cmbStudent" layoutX="104.0" layoutY="101.0" onAction="#studentCmbOnAction" prefWidth="200.0" promptText="Select Student" styleClass="combo-box" />
+      <ComboBox fx:id="cmbProgram" layoutX="415.0" layoutY="102.0" onAction="#programCmbOnAction" prefWidth="200.0" promptText="Select Student" styleClass="combo-box" />
+         <Button fx:id="btnRefill" layoutX="287.0" layoutY="460.0" onAction="#refillAction" styleClass="dashboard-button" text="Refill" />
+         <Button fx:id="btnPay" layoutX="105.0" layoutY="460.0" onAction="#payAction" styleClass="dashboard-button" text="Pay" />
+         <Button fx:id="btnClear" layoutX="475.0" layoutY="460.0" onAction="#clearAction" styleClass="dashboard-button" text="Clear" />
+      <Label layoutX="104.0" layoutY="349.0" text="Refill (LKR)" />
+      <TextField fx:id="refillAmountTxt" layoutX="256.0" layoutY="345.0" prefWidth="250.0" promptText="Enter Payment Method" />
+
+    </children>
+</AnchorPane>
