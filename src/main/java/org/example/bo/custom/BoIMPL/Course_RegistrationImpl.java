@@ -6,7 +6,9 @@ import org.example.dao.DaoFactory;
 import org.example.dao.custom.Course_registrationDao;
 import org.example.dao.custom.ProgramDao;
 import org.example.dao.custom.StudentDao;
+import org.example.dto.Student_programDto;
 import org.example.entity.Payment;
+import org.example.entity.Student;
 import org.example.entity.Student_programDetail;
 import org.hibernate.Session;
 
@@ -59,7 +61,25 @@ public class Course_RegistrationImpl implements Course_Refistration {
     public List<String> getAllProgrambyId(String id) {
         Session session = FactoryConfiguration.getInstance().getSession();
         session.beginTransaction();
-        String hql = "from Student_programDetail where student = :id";
-        return session.createQuery(hql, String.class).setParameter("id", id).list();
+
+        // Modify the query to use the student ID directly
+        String hql = "select program.name from Student_programDetail where student.id = :studentId";
+        List<String> programs = session.createQuery(hql, String.class)
+                .setParameter("studentId", id)
+                .list();
+        System.out.println(programs);
+        session.getTransaction().commit();
+        session.close();
+
+        return programs;
     }
+
+    @Override
+    public String getspid(String sid, String pid) {
+        return courseRegistrationDao.getspid(sid,pid);
+    }
+
+
+
+
 }

@@ -30,6 +30,8 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 public class RegisterCourseContraller {
+    public Button backbtn;
+    public Button btnrefill;
     StudentBo studentBo = (StudentBo) BoFactory.getBoFactory().getBO(BoFactory.BOTypes.STUDENT);
     ProgramBo programBo = (ProgramBo) BoFactory.getBoFactory().getBO(BoFactory.BOTypes.PROGRAM);
     Course_Refistration courseRefistration = ( Course_Refistration) BoFactory.getBoFactory().getBO(BoFactory.BOTypes.COURSE);
@@ -177,6 +179,17 @@ public class RegisterCourseContraller {
 
     public void backOnAction(ActionEvent actionEvent) throws IOException {
         AnchorPane rootNode = FXMLLoader.load(getClass().getResource("/view/dashboard.fxml"));
+
+        Scene scene = new Scene(rootNode);
+
+        Stage stage = (Stage) txtAmountPaid.getScene().getWindow();
+        stage.setScene(scene);
+        stage.centerOnScreen();
+        stage.setTitle("Login Page");
+    }
+
+    public void refillOnAction(ActionEvent actionEvent) throws IOException {
+        AnchorPane rootNode = FXMLLoader.load(getClass().getResource("/view/payment.fxml"));
 
         Scene scene = new Scene(rootNode);
 

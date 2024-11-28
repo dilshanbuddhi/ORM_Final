@@ -17,5 +17,7 @@ public interface ProgramDao extends CrudDao<Programme> {
     boolean update(Programme programme);
 
     Programme searchByName(String cname);
+
+    String getID(String pname);
 }
 

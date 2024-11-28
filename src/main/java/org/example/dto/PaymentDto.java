@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.example.entity.Student_programDetail;
 
 
 @NoArgsConstructor
@@ -11,9 +12,9 @@ import lombok.Setter;
 @Getter
 @Setter
 public class PaymentDto {
-    private String pid;
+    private long pid;
     private String paymentMethod;
     private String paymentDate;
     private double remainPayment;
-    private Student_programDto studentProgramDetail;
+    private String spid;
 }

@@ -1,9 +1,6 @@
 package org.example.bo;
 
-import org.example.bo.custom.BoIMPL.Course_RegistrationImpl;
-import org.example.bo.custom.BoIMPL.ProgramBoImpl;
-import org.example.bo.custom.BoIMPL.StudentBoImpl;
-import org.example.bo.custom.BoIMPL.UserBoImpl;
+import org.example.bo.custom.BoIMPL.*;
 
 public class BoFactory {
     private static BoFactory boFactory;
@@ -14,7 +11,7 @@ public class BoFactory {
     }
 
     public enum BOTypes{
-        USER,STUDENT,PROGRAM,COURSE
+        USER,STUDENT,PROGRAM,COURSE,PAYMENT
     }
 
 
@@ -31,7 +28,11 @@ public class BoFactory {
 
             case COURSE:
                 return new Course_RegistrationImpl();
+
+            case PAYMENT:
+                return new PaymentBoImpl();
         }
+
         return null;
     }
 }

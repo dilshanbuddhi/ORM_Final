@@ -98,4 +98,15 @@ public class ProgramDaoImpl implements ProgramDao {
         }
 
         return programme;     }
+
+    @Override
+    public String getID(String pname) {
+        Session session = FactoryConfiguration.getInstance().getSession();
+        session.beginTransaction();
+        String hql = "SELECT programId FROM Programme WHERE name = :name";
+        String programId = session.createQuery(hql, String.class)
+                .setParameter("name", pname)
+                .getSingleResult();
+        return programId;
+    }
 }
