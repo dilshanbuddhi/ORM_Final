@@ -1,16 +1,13 @@
 package org.example.contraller;
 
+import com.mysql.cj.log.Log;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import org.example.bo.BoFactory;
@@ -19,10 +16,7 @@ import org.example.bo.custom.ProgramBo;
 import org.example.bo.custom.StudentBo;
 import org.example.dao.DaoFactory;
 import org.example.dao.custom.Course_registrationDao;
-import org.example.dto.PaymentDto;
-import org.example.dto.ProgramDto;
-import org.example.dto.StudentDto;
-import org.example.dto.Student_programDto;
+import org.example.dto.*;
 
 import java.io.IOException;
 import java.time.LocalDate;
@@ -98,6 +92,14 @@ public class RegisterCourseContraller {
         cmbPaymentStatus.getItems().addAll("cash", "card");
         setStudentCmb();
         setCourseCmb();
+        UserDto userDto = LoginFormContraller.getLiveUserRole();
+        checkRoll(userDto);
+    }
+
+    private void checkRoll(UserDto userDto) {
+        if (userDto.getRole().equals("User")) {
+            btnrefill.setVisible(false);
+        }
     }
 
     private void setCourseCmb() {
@@ -142,12 +144,22 @@ public class RegisterCourseContraller {
         String date = LocalDateTime.now().toString();
 
         if (st_id != null && pDto != null && payment_status != null && amount_paid > 0) {
-            double fee = pDto.getFees();
-            double amount = amount_paid;
 
-            double remaining = fee - amount;
+            boolean isregister =courseRefistration.isRegister(st_id, pDto.getProgramId());
+            System.out.println(isregister);
 
-            courseRefistration.register(id,date,pDto.getProgramId(),st_id,payment_status,amount_paid,remaining);
+            if (isregister) {
+                double fee = pDto.getFees();
+                double amount = amount_paid;
+
+                double remaining = fee - amount;
+
+                courseRefistration.register(id,date,pDto.getProgramId(),st_id,payment_status,amount_paid,remaining);
+
+            }else {
+                new Alert(Alert.AlertType.ERROR, "Already Registered").show();
+            }
+
 
            /* Student_programDto studentProgramDto = new Student_programDto(null, date, sDto, pDto);
             PaymentDto paymentDto = new PaymentDto(null, payment_status, date, amount_paid, studentProgramDto);

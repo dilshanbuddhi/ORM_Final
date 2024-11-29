@@ -72,7 +72,14 @@ public class DashboardController {
         stage.setTitle("Registration Page");
     }
 
-    public void backOnAction(ActionEvent actionEvent) {
+    public void backOnAction(ActionEvent actionEvent) throws IOException {
+        AnchorPane rootNode = FXMLLoader.load(getClass().getResource("/view/LoginForm.fxml"));
 
+        Scene scene = new Scene(rootNode);
+
+        Stage stage = (Stage) btnStudentManagement.getScene().getWindow();
+        stage.setScene(scene);
+        stage.centerOnScreen();
+        stage.setTitle("Registration Page");
     }
 }

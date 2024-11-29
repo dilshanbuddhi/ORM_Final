@@ -20,7 +20,7 @@ public class Payment {
     private String paymentDate;
     private double remainPayment;
 
-    @OneToOne
+    @OneToOne (cascade = CascadeType.ALL)
     @JoinColumn(name = "sp_id")
     private Student_programDetail studentProgramDetail;
 
@@ -30,9 +30,4 @@ public class Payment {
         this.remainPayment = remainPayment;
         this.studentProgramDetail = studentProgramDetail;
     }
-
-    /*  @ManyToOne
-    @JoinColumn(name = "student_id")
-    private Student student;*/
-
 }

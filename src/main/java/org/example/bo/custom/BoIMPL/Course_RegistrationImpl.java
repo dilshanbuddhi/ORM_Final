@@ -79,7 +79,10 @@ public class Course_RegistrationImpl implements Course_Refistration {
         return courseRegistrationDao.getspid(sid,pid);
     }
 
-
+    @Override
+    public boolean isRegister(String stId, String programId) {
+        return courseRegistrationDao.isregistered(stId,programId);
+    }
 
 
 }

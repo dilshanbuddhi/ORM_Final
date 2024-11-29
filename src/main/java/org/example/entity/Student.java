@@ -36,7 +36,7 @@ public class Student {
         this.dob = dob;
     }
 
-   @OneToMany(mappedBy = "student")
+   @OneToMany(mappedBy = "student" , cascade = {CascadeType.ALL})
     private List<Student_programDetail> studentProgramDetails;
 
 }

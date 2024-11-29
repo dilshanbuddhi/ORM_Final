@@ -7,11 +7,13 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import org.example.bo.BoFactory;
 import org.example.bo.custom.ProgramBo;
 import org.example.dto.ProgramDto;
+import org.example.dto.UserDto;
 import org.example.entity.Programme;
 
 import java.awt.event.MouseEvent;
@@ -64,6 +66,16 @@ public class ProgramManagementController {
     public void initialize() {
         setcellvaluefactory();
         getallProgram();
+        UserDto userDto = LoginFormContraller.getLiveUserRole();
+        checkRoll(userDto);
+    }
+
+    private void checkRoll(UserDto userDto) {
+        if (userDto.getRole().equals("User")) {
+            btnAddProgram.setVisible(false);
+            btnDeleteProgram.setVisible(false);
+            btnUpdateProgram.setVisible(false);
+        }
     }
 
     private void setcellvaluefactory() {
@@ -90,7 +102,7 @@ public class ProgramManagementController {
         String duration = txtDuration.getText();
         double fee = Double.parseDouble(txtFee.getText());
 
-        if (programId.isEmpty() || programName.isEmpty() || duration.isEmpty() || fee <= 0) {
+        if (isValid()) {
             new Alert(Alert.AlertType.ERROR, "Please fill all the fields").show();
         }else {
             Programme programme = new Programme(programId, programName, duration, fee);
@@ -102,6 +114,7 @@ public class ProgramManagementController {
         }
 
     }
+
 
     @FXML
     void deleteProgram(ActionEvent event) {
@@ -135,6 +148,15 @@ public class ProgramManagementController {
             }
         }
     }
+
+    public void clear() {
+        txtProgramID.clear();
+        txtProgramName.clear();
+        txtDuration.clear();
+        txtFee.clear();
+
+    }
+
 
     @FXML
     void updateProgram(ActionEvent event) {
@@ -183,5 +205,52 @@ public class ProgramManagementController {
         stage.setScene(scene);
         stage.centerOnScreen();
         stage.setTitle("Login Page");
+    }
+
+    public boolean isValid() {
+        String id = txtProgramID.getText();
+        String name = txtProgramName.getText();
+        String duration = txtDuration.getText();
+        double fee = Double.parseDouble(txtFee.getText());
+
+        if (id.matches("^[a-z]{3,}[0-9]{3,}$") && name.matches("[a-zA-Z ]{3,}") && duration.matches("^\\d+\\s+(year|month)$") && fee > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+
+    public void idOnKeyReleased(KeyEvent keyEvent) {
+        if (txtProgramID.getText().matches("^[a-z]{3,}[0-9]{3,}$")) {
+            txtProgramID.setStyle("-fx-border-color: green; -fx-border-width: 2px; -fx-border-radius: 5px;");
+        }else {
+            txtProgramID.setStyle("-fx-border-color: red; -fx-border-width: 2px; -fx-border-radius: 5px;");
+        }
+    }
+
+    public void nameOnKeyReleased(KeyEvent keyEvent) {
+        if (txtProgramName.getText().matches("[a-zA-Z ]{4,}")) {
+            txtProgramName.setStyle("-fx-border-color: green; -fx-border-width: 2px; -fx-border-radius: 5px;");
+        }else {
+            txtProgramName.setStyle("-fx-border-color: red; -fx-border-width: 2px; -fx-border-radius: 5px;");
+        }
+    }
+
+    public void durationOnKeyReleased(KeyEvent keyEvent) {
+        if (txtDuration.getText().matches("^\\d+\\s+(year|month)$")) {
+            txtDuration.setStyle("-fx-border-color: green; -fx-border-width: 2px; -fx-border-radius: 5px;");
+        }else {
+            txtDuration.setStyle("-fx-border-color: red; -fx-border-width: 2px; -fx-border-radius: 5px;");
+        }
+    }
+
+
+    public void feeOnKeyReleased(KeyEvent keyEvent) {
+        if (txtFee.getText().matches("\\d+")) {
+            txtFee.setStyle("-fx-border-color: green; -fx-border-width: 2px; -fx-border-radius: 5px;");
+        }else {
+            txtFee.setStyle("-fx-border-color: red; -fx-border-width: 2px; -fx-border-radius: 5px;");
+        }
     }
 }

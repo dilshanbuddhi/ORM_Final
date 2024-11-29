@@ -87,10 +87,12 @@ public class StudentManagementController {
     }
 
     private void checkrolll(UserDto liveUser) {
-        if (liveUser.getRole().equals("user")){
-            btnAddStudent.setVisible(true);
+        System.out.println(liveUser.getRole());
+
+        if (liveUser.getRole().equals("User")){
+            /*btnAddStudent.setVisible(true);*/
             btnDeleteStudent.setVisible(false);
-            btnUpdateStudent.setVisible(true);
+            btnUpdateStudent.setVisible(false);
         }
     }
 

@@ -8,18 +8,23 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import org.example.bo.BoFactory;
 import org.example.bo.custom.UserBo;
 import org.example.dto.UserDto;
+import org.example.entity.User;
+import org.springframework.security.crypto.bcrypt.BCrypt;
 
 import java.io.IOException;
 import java.util.List;
 
 public class UserManagementController {
     public ComboBox roleCmb;
+    public Button backbtn;
+    public TextField passwordtxt;
     UserBo userBo = (UserBo) BoFactory.getBoFactory().getBO(BoFactory.BOTypes.USER);
 
     @FXML
@@ -65,6 +70,16 @@ public class UserManagementController {
         roleCmb.getItems().addAll("Admin", "User");
         setcellvalue();
         loadAllUsers();
+        UserDto userDto = LoginFormContraller.getLiveUserRole();
+        checkRoll(userDto);
+    }
+
+    private void checkRoll(UserDto userDto) {
+        if (userDto.getRole().equals("User")) {
+            btnAddUser.setVisible(false);
+            btnDeleteUser.setVisible(false);
+            btnUpdateUser.setVisible(false);
+        }
     }
 
     private void loadAllUsers() {
@@ -91,15 +106,17 @@ public class UserManagementController {
         String id = txtUserID.getText();
         String username = txtUsername.getText();
         String email = txtEmail.getText();
-        String password = txtPassword.getText();
+        String password = passwordtxt.getText();
         String role = (String) roleCmb.getValue();
 
-        if (id.isEmpty() || username.isEmpty() || email.isEmpty() || password.isEmpty() || role.isEmpty()) {
+        if (!isValid()) {
             new Alert(Alert.AlertType.ERROR, "Please fill all the fields").show();
         } else {
-            UserDto userDto = new UserDto(username, email, password, role);
+            String bycryptedPassword = BCrypt.hashpw(password, BCrypt.gensalt());
+            UserDto userDto = new UserDto(username, email, bycryptedPassword, role);
             boolean issaved = userBo.save(userDto);
             if (issaved) {
+                loadAllUsers();
                 new Alert(Alert.AlertType.CONFIRMATION, "User Saved").show();
 
             } else {
@@ -184,5 +201,48 @@ public class UserManagementController {
         stage.centerOnScreen();
         stage.setTitle("Registration Page");
 
+    }
+
+    public boolean isValid(){
+        String id = txtUserID.getText();
+        String username = txtUsername.getText();
+        String email = txtEmail.getText();
+        String password = passwordtxt.getText();
+        String role = (String) roleCmb.getValue();
+
+        if (
+                username.matches("[a-zA-Z0-9]{4,}") &&
+                email.matches("^[\\w!#$%&'*+/=?`{|}~^-]+(?:\\.[\\w!#$%&'*+/=?`{|}~^-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$") &&
+                password.matches("[a-zA-Z0-9]{6,}")
+                ) {
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+
+    public void usernameOnKeyReleased(KeyEvent keyEvent) {
+        if (txtUsername.getText().matches("[a-zA-Z0-9]{4,}")) {
+            txtUsername.setStyle("-fx-border-color: green; -fx-border-width: 2px; -fx-border-radius: 5px;");
+        }else {
+            txtUsername.setStyle("-fx-border-color: red; -fx-border-width: 2px; -fx-border-radius: 5px;");
+        }
+    }
+
+    public void emailOnKeyReleased(KeyEvent keyEvent) {
+        if (txtEmail.getText().matches("^[\\w!#$%&'*+/=?`{|}~^-]+(?:\\.[\\w!#$%&'*+/=?`{|}~^-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$")) {
+            txtEmail.setStyle("-fx-border-color: green; -fx-border-width: 2px; -fx-border-radius: 5px;");
+        }else {
+            txtEmail.setStyle("-fx-border-color: red; -fx-border-width: 2px; -fx-border-radius: 5px;");
+        }
+    }
+
+    public void passwordOnKeyReleased(KeyEvent keyEvent) {
+        if (passwordtxt.getText().matches("[a-zA-Z0-9]{6,}")) {
+            passwordtxt.setStyle("-fx-border-color: green; -fx-border-width: 2px; -fx-border-radius: 5px;");
+        }else {
+            passwordtxt.setStyle("-fx-border-color: red; -fx-border-width: 2px; -fx-border-radius: 5px;");
+        }
     }
 }

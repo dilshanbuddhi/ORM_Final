@@ -12,4 +12,6 @@ public interface Course_registrationDao extends CrudDao<Course_Refistration> {
 
     String getspid(String sid, String pid);
 
+
+    boolean isregistered(String stId, String programId);
 }

@@ -46,7 +46,7 @@ public class UserBoImpl implements UserBo {
 
     @Override
     public boolean save(UserDto userDto) {
-        return userDao.save(new User(userDto.getId(), userDto.getUsername(), userDto.getEmail(), userDto.getPassword(), userDto.getRole()));
+        return userDao.save(new User( userDto.getUsername(), userDto.getEmail(), userDto.getPassword(), userDto.getRole()));
     }
 
     @Override

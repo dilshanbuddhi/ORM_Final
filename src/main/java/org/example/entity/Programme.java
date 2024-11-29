@@ -1,5 +1,6 @@
 package org.example.entity;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
@@ -31,7 +32,7 @@ public class Programme {
         this.fees = fees;
     }
 
-    @OneToMany(mappedBy = "program")
+    @OneToMany(mappedBy = "program" , cascade = CascadeType.ALL)
     private List<Student_programDetail> studentProgramDetails;
 
 

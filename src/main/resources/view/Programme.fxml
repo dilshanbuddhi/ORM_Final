@@ -20,19 +20,19 @@
         <GridPane alignment="TOP_LEFT" hgap="15" layoutX="105.0" layoutY="103.0" vgap="10">
             <!-- Row 1 -->
             <Label text="Program ID:" />
-            <TextField fx:id="txtProgramID" prefWidth="250.0" promptText="Enter Program ID" GridPane.columnIndex="1" />
+            <TextField fx:id="txtProgramID" onKeyReleased="#idOnKeyReleased" prefWidth="250.0" promptText="Enter Program ID" GridPane.columnIndex="1" />
 
             <!-- Row 2 -->
             <Label text="Program Name:" GridPane.rowIndex="1" />
-            <TextField fx:id="txtProgramName" prefWidth="250.0" promptText="Enter Program Name" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="txtProgramName" onKeyReleased="#nameOnKeyReleased" prefWidth="250.0" promptText="Enter Program Name" GridPane.columnIndex="1" GridPane.rowIndex="1" />
 
             <!-- Row 3 -->
             <Label text="Duration:" GridPane.rowIndex="2" />
-            <TextField fx:id="txtDuration" prefWidth="250.0" promptText="Enter Duration" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextField fx:id="txtDuration" onKeyReleased="#durationOnKeyReleased" prefWidth="250.0" promptText="Enter Duration" GridPane.columnIndex="1" GridPane.rowIndex="2" />
 
             <!-- Row 4 -->
             <Label text="Fee (LKR):" GridPane.rowIndex="3" />
-            <TextField fx:id="txtFee" prefWidth="250.0" promptText="Enter Fee in LKR" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <TextField fx:id="txtFee" onKeyTyped="#feeOnKeyReleased" prefWidth="250.0" promptText="Enter Fee in LKR" GridPane.columnIndex="1" GridPane.rowIndex="3" />
 
             <columnConstraints>
                 <ColumnConstraints />

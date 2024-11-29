@@ -55,5 +55,18 @@ public class Course_RegistrationDaoImpl implements Course_registrationDao {
         return null;
     }
 
+    @Override
+    public boolean isregistered(String stId, String programId) {
+        Session session = FactoryConfiguration.getInstance().getSession();
+        String hql = "select spid from Student_programDetail where student.id = :stId and program.programId = :programId";
+        String spid = (String) session.createQuery(hql).setParameter("stId", stId).setParameter("programId", programId).uniqueResult();
+        if (spid == null) {
+            return true;
+        }
+        return false;
+    }
+
+
+
 
 }

@@ -26,15 +26,17 @@
 
             <!-- Row 2 -->
             <Label text="Username:" GridPane.rowIndex="1" />
-            <TextField fx:id="txtUsername" prefWidth="250.0" promptText="Enter Username" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="txtUsername" onKeyReleased="#usernameOnKeyReleased" prefWidth="250.0" promptText="Enter Username" GridPane.columnIndex="1" GridPane.rowIndex="1" />
 
             <!-- Row 3 -->
             <Label text="Email:" GridPane.rowIndex="2" />
-            <TextField fx:id="txtEmail" prefWidth="250.0" promptText="Enter Email" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextField fx:id="txtEmail" onKeyReleased="#emailOnKeyReleased" prefWidth="250.0" promptText="Enter Email" GridPane.columnIndex="1" GridPane.rowIndex="2" />
 
             <!-- Row 4 -->
-            <Label text="Role:" GridPane.rowIndex="3" />
-         <ComboBox fx:id="roleCmb" prefHeight="26.0" prefWidth="249.0" styleClass="combobox" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <Label text="Role:" GridPane.rowIndex="5" />
+         <ComboBox fx:id="roleCmb" prefHeight="26.0" prefWidth="249.0" styleClass="combobox" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+         <TextField fx:id="passwordtxt" layoutX="105.0" layoutY="128.0" onKeyReleased="#passwordOnKeyReleased" prefWidth="250.0" promptText="Enter passsword" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+         <Label layoutX="10.0" layoutY="94.0" text="Password" GridPane.rowIndex="4" />
 
             <columnConstraints>
                 <ColumnConstraints />
@@ -46,6 +48,8 @@
                 <RowConstraints />
                 <RowConstraints />
                 <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
             </rowConstraints>
         </GridPane>
 
@@ -72,6 +76,6 @@
             </font>
         </Text>
       <Button fx:id="backbtn" layoutX="760.0" layoutY="43.0" mnemonicParsing="false" onAction="#backOnAction" prefHeight="19.0" prefWidth="111.0" styleClass="back-button" text="Back" />
-      <Hyperlink layoutX="162.0" layoutY="276.0" onAction="#passwordChangeOnAction" prefHeight="24.0" prefWidth="150.0" text="Change Password !!" />
+      <Hyperlink layoutX="297.0" layoutY="327.0" onAction="#passwordChangeOnAction" prefHeight="24.0" prefWidth="150.0" text="Change Password !!" />
     </children>
 </AnchorPane>
